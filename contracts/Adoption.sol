@@ -1,4 +1,5 @@
-pragma solidity ^0.5.0;
+// SPDX-License-Identifier: Unlicensed
+pragma solidity >=0.8.0;
 
 contract Adoption {
     address[16] public adopters;
