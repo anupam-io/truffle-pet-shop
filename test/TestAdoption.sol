@@ -25,16 +25,19 @@ contract TestAdoption {
 
     // Testing retrieval of a single pet's owner
     function testGetAdopterAddressByPetId() public {
-        address adopter = adoption.adopters(expectedPetId);
+        uint id = adoption.adoptersNo(address(this));
 
-        Assert.equal(adopter, expectedAdopter, "Owner of the expected pet should be this contract");
+        Assert.equal(
+            id, 
+            expectedPetId,
+            "Owner of the expected pet should be this contract");
     }
 
     // Testing retrieval of all pet owners
     function testGetAdopterAddressByPetIdInArray() public {
         // Store adopters in memory rather than contract's storage
-        address[16] memory adopters = adoption.getAdopters();
+        address[] memory adopters = adoption.getAdopters();
 
-        Assert.equal(adopters[expectedPetId], expectedAdopter, "Owner of the expected pet should be this contract");
+        Assert.equal(adopters[0], expectedAdopter, "Owner of the expected pet should be this contract");
     }
 }
